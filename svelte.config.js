@@ -19,9 +19,6 @@ const config = {
 			fallback: null,
 			precompress: false
 		}),
-		paths: {
-			base: dev ? "" : "/starseek",
-		},
 		
 		prerender: {
 			default: true
