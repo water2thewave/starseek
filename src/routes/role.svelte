@@ -1,6 +1,79 @@
-      <div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+<script>
+
+  import "@carbon/charts/styles.min.css";
+	import "carbon-components/css/carbon-components.min.css";
+  import {RadarChart} from '@carbon/charts-svelte';
+
+  const className = "Wizard";
+	const options = {
+      "title": className,
+      "radar": {
+        "axes": {
+          "angle": "feature",
+          "value": "score"
+        }
+      },
+      "data": {
+        "groupMapsTo": "product"
+      },
+      "height": "400px",
+    };
+  const data = [
+    {
+      "product": "Product 1",
+      "feature": "Price",
+      "score": 60
+    },
+    {
+      "product": "Product 1",
+      "feature": "Usability",
+      "score": 92
+    },
+    {
+      "product": "Product 1",
+      "feature": "Availability",
+      "score": 5
+    },
+    {
+      "product": "Product 1",
+      "feature": "Performance",
+      "score": 85
+    },
+    {
+      "product": "Product 1",
+      "feature": "Quality",
+      "score": 60
+    },
+    {
+      "product": "Product 2",
+      "feature": "Price",
+      "score": 70
+    },
+    {
+      "product": "Product 2",
+      "feature": "Usability",
+      "score": 63
+    },
+    {
+      "product": "Product 2",
+      "feature": "Availability",
+      "score": 78
+    },
+    {
+      "product": "Product 2",
+      "feature": "Performance",
+      "score": 50
+    },
+    {
+      "product": "Product 2",
+      "feature": "Quality",
+      "score": 30
+    }
+  ];
+</script>
+
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Dashboard</h1>
+        <h1 class="h2">My Role Progress</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group me-2">
             <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
@@ -12,6 +85,8 @@
           </button>
         </div>
       </div>
+  
+      <RadarChart {data} {options}></RadarChart>
 
 
       <h2>Section title</h2>
@@ -142,3 +217,4 @@
           </tbody>
         </table>
       </div>
+  

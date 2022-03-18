@@ -2,6 +2,7 @@ import adapter from '@sveltejs/adapter-static';
 import preprocess from 'svelte-preprocess';
 
 const dev = "production" === "development";
+const production = process.env.NODE_ENV == 'production';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -19,6 +20,15 @@ const config = {
 			fallback: null,
 			precompress: false
 		}),
+		
+		vite: {
+			optimizeDeps: {
+				include: ['@carbon/charts'],
+			},
+			ssr: {
+				noExternal: [production && '@carbon/charts'].filter(Boolean),
+			},
+		},
 		
 		prerender: {
 			default: true
