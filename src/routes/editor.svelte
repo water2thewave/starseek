@@ -1,9 +1,11 @@
 <script>
   
   import ContestellationHome from "$lib/components/ConstellationHome.svelte";
+  import RoleSelector from "$lib/components/RoleSelector.svelte";
   import { writable } from '$lib/browserStore.js';
 
   import {roles as defaultRoles} from '../../static/roles.json';
+  import { session } from "$app/stores";
 
   const defaultRole = 'cosmos';
 	const defaultRoleData = {nodes: [], links: []};
@@ -14,6 +16,11 @@
   roles = defaultRoles.map((d) => d.name );
   roleData = defaultRoles.find((d) => d.name === defaultRole).data || {};
 
+  let roleDatas = defaultRoles.reduce((store, e) => {
+    store[e.name] = e.data;
+    return store;
+  }, {});
+
   // console.log({defaultRoles});
 
   var debugEnabled = false;;
@@ -21,8 +28,8 @@
   var nodeNumEnabled = false;
   var selectedRole = 'cosmos';
 
-  let clientWidth = 300;
-  let clientHeight = 300;
+  let clientWidth = 700;
+  let clientHeight = 700;
 
 
   // const roles = writable('roles', [{defaultRole: defaultRoleData}]);
@@ -59,47 +66,48 @@ function saveRole(role, data) {
 
 	// window.localStorage.setItem(role, jsonStr);
 	// window.sessionStorage.setItem('selectedRole', selectedRole);
+
+}
+
+function loadRole(roleName) {
+  return new Promise((resolve) => {
+    let storedData = window.localStorage.getItem(roleName);
+    console.log({storedData});
+    if (storedData != null) {
+      resolve(JSON.parse(storedData));
+    }
+    
+    // try getting default data
+    if (roleName in roleDatas) {
+      const data = roleDatas[roleName];
+      console.log(`Loading default role data for ${roleName}`, data);
+      resolve(roleDatas[roleName]);
+    }
+
+    // console.log(`Did not class to ${role}`, roleData);
+    throw Error('No data found');
+  });
+}
+
+function onRoleSelect(e) {
+  const roleName = e.detail;
+
+  console.log('Role selected', roleName);
+  loadRole(roleName)
+    .then((roleData) => {
+      selectedRole = roleName;
+    })
+    .catch((e) => {
+      console.error(`Could not load role from role selector: ${roleName}`)
+    });
 }
 
 </script>
 
-	<div class="row">
-		<div class="col">
-		{#each roles as roleName}
-			<button class="btn btn-outline-primary {roleName == selectedRole ? 'active' : ''}" type="button" aria-pressed={roleName == selectedRole}
-			on:click={(e) => {
-				// loadLocalStorage(roleName)
-				// 	.then((data) => { 
-				// 		roleData = data; 
-				// 		selectedRole = roleName; 
-				// 		console.debug({data});
-				// }).catch((e) => {
-				// 		const roleFile = `${roleName}.json`;
-				// 		let save = (obj) => {
-				// 			roleData = obj;
-				// 			console.log(`Loading from file ${roleName}`, roleData);
-				// 			selectedRole = roleName;
-				// 			// saveRole(roleName, obj);
-				// 		};
-
-				// 		// load role from file, use default if missing
-				// 		d3.json(roleFile)
-				// 			.then(save)
-				// 			.catch(e => {
-				// 				d3.json(defaultDataFile)
-				// 					.then(save);
-				// 			});
-				// });
-				}}>{roleName}</button>
-		{/each}
-
-			<button class="btn btn-outline-success" type="button" aria-pressed="false"
-			on:click={(e) => {
-				// new role
-			}}>+ Role</button>
-		</div>
-	</div>
-
+<RoleSelector bind:roles
+  on:roleSelect={onRoleSelect}
+  bind:selectedRole
+></RoleSelector>
 
 
 <ContestellationHome 

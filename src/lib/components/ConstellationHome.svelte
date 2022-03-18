@@ -10,34 +10,33 @@
 	import KnowledgeGraph from '../../brain/KnowledgeGraph.svelte';
 	import DebugPanel from '../../brain/DebugPanel.svelte';
   import * as d3 from "d3";
-import { onMount } from 'svelte';
+	import { onMount } from 'svelte';
 
 
-	// getRoles();
 
 	console.log({roles});
 	console.log({roleData});
 
 
 	onMount( () => {
-		loadLocalStorage(selectedRole)
-			.then( (loaded) => { 
-				console.log(`Changing class to ${selectedRole}`);
-				roleData = loaded;
-				console.debug({loaded});
-			})
-			.catch((e) => {
-			// console.error(`Invalid json in localstorage for role "${role}"`, roleData);
-				console.log(`Loading default data for ${defaultRole}`);
-				d3.json(`${roles[0] || 'data'}.json`)
-					.then ((obj) => { 
-						roleData = obj;
-						console.log('default data loaded', roleData);
-						selectedRole = defaultRole;
-						// saveRole(defaultRole, obj);
-					})
-					.catch(console.error);
-			});
+		// loadLocalStorage(selectedRole)
+		// 	.then( (loaded) => { 
+		// 		console.log(`Changing class to ${selectedRole}`);
+		// 		roleData = loaded;
+		// 		console.debug({loaded});
+		// 	})
+		// 	.catch((e) => {
+		// 	// console.error(`Invalid json in localstorage for role "${role}"`, roleData);
+		// 		console.log(`Loading default data for ${defaultRole}`);
+		// 		d3.json(`${roles[0] || 'data'}.json`)
+		// 			.then ((obj) => { 
+		// 				roleData = obj;
+		// 				console.log('default data loaded', roleData);
+		// 				selectedRole = defaultRole;
+		// 				// saveRole(defaultRole, obj);
+		// 			})
+		// 			.catch(console.error);
+		// 	});
 
 	});
 
