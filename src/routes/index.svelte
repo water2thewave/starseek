@@ -1,23 +1,45 @@
+<script>
+  const cards = [
+    {
+      title: 'Apprentice',
+      cid: 'QmeDKQEZe4RQaS6zLHYijGF1FHbkGWUM3mmAsFjw98t1kr',
+      desc: 'Some rare dude',
+    },
+    {
+      title: 'Atronarch',
+      cid: 'QmRNiCq8Lb8PCNfBBZWyG1dDTAaUXrzRLdU3aqqc9UZSkc',
+      desc: 'Lion man',
+    },
+    {
+      title: 'Lady',
+      cid: 'QmR68JgpRRbtFrW7YXnYua1eYah9RH4h7SVdQ92bTBvN4T',
+      desc: 'Wicked witch of the west',
+    },
+    {
+      title: 'Wizard',
+      cid: 'QmV4cXAGardNqDyoGPLbCJzvERtUQe1AYzzrZdkzS64o6r',
+      desc: 'The strongest DPS man',
+    },
+  ];
+</script>
 
-
-<p>
-  <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Toggle first element</a>
-  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Toggle second element</button>
-  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Toggle both elements</button>
-</p>
 <div class="row">
+  {#each cards as {title, cid, desc}}
   <div class="col">
-    <div class="collapse multi-collapse" id="multiCollapseExample1">
-      <div class="card card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-      </div>
+  <div class="card" style="width: 18rem;">
+    <img src="https://ipfs.io/ipfs/{cid}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{title}</h5>
+      <div class="row">
+      <div class="col">
+      <p class="card-text">{desc}</p>
+    </div>
+      <div class="col">
+      <a href="#" class="btn btn-primary">View</a>
+    </div>
+    </div>
     </div>
   </div>
-  <div class="col">
-    <div class="collapse multi-collapse" id="multiCollapseExample2">
-      <div class="card card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-      </div>
-    </div>
   </div>
+{/each}
 </div>
