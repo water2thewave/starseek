@@ -19,29 +19,6 @@
 	console.log({roles});
 	console.log({roleData});
 
-
-	onMount( () => {
-		// loadLocalStorage(selectedRole)
-		// 	.then( (loaded) => { 
-		// 		console.log(`Changing class to ${selectedRole}`);
-		// 		roleData = loaded;
-		// 		console.debug({loaded});
-		// 	})
-		// 	.catch((e) => {
-		// 	// console.error(`Invalid json in localstorage for role "${role}"`, roleData);
-		// 		console.log(`Loading default data for ${defaultRole}`);
-		// 		d3.json(`${roles[0] || 'data'}.json`)
-		// 			.then ((obj) => { 
-		// 				roleData = obj;
-		// 				console.log('default data loaded', roleData);
-		// 				selectedRole = defaultRole;
-		// 				// saveRole(defaultRole, obj);
-		// 			})
-		// 			.catch(console.error);
-		// 	});
-
-	});
-
 	function loadLocalStorage(role) {
 		return new Promise( (resolve) => {
 			let storedData = window.localStorage.getItem(role);
@@ -55,10 +32,6 @@
 			}
 		});
 	}
-
-			
-
-
 
 
 </script>
@@ -88,12 +61,12 @@
 			editMode = !editMode;
 		}}
 		class="btn btn-outline-warning" aria-pressed={editMode} data-toggle="button" type="button" 
-    role="button"> ✏️ </button>
+    > ✏️ </button>
 
   <button 
 		on:click={() => { debugEnabled = !debugEnabled }}
 		class="btn btn-outline-info {debugEnabled ? 'active' : ''}" aria-pressed={debugEnabled} data-bs-tggle="button" type="button" 
-    role="button"> ⛏️ </button>
+    > ⛏️ </button>
 
 	</h1>
 	{#if debugEnabled}

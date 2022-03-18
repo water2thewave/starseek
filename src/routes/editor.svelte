@@ -3,6 +3,7 @@
   import ContestellationHome from "$lib/components/ConstellationHome.svelte";
   import RoleSelector from "$lib/components/RoleSelector.svelte";
   import { writable } from '$lib/browserStore.js';
+  import * as rolesJson from "../../static/roles.json";
 
   import { session } from "$app/stores";
   import { onMount } from "svelte";
@@ -22,23 +23,12 @@
   });
   console.log('roleStore:',$roleStore);
 
-  onMount( () => {
-    fetchDefaultRoles();
-  });
+  defaultRoles = rolesJson.roles.reduce((map, {name, data}) => { 
+    map[name] = data; 
+    return map;
+  }, {});
+  roles = Object.keys(defaultRoles);
 
-  function fetchDefaultRoles() {
-    fetch('roles.json')
-      .then(response => response.json())
-      .then(roleMap => {
-        defaultRoles = roleMap.roles.reduce((map, {name, data}) => { 
-          map[name] = data; 
-          return map;
-        }, {});
-        roles = Object.keys(defaultRoles);
-      });
-  }
-
-  // console.log({defaultRoles});
 
   var debugEnabled = false;;
   var editMode = false;
