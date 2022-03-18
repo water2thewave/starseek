@@ -1,5 +1,7 @@
-import adapter from '@sveltejs/adapter-auto';
+import adapter from '@sveltejs/adapter-static';
 import preprocess from 'svelte-preprocess';
+
+const dev = "production" === "development";
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -8,7 +10,22 @@ const config = {
 	preprocess: preprocess(),
 
 	kit: {
-		adapter: adapter()
+		// https://sveltesaas.com/articles/sveltekit-github-pages-guide/
+		// for building to github pages
+		adapter: adapter({
+			// default options are shown
+			pages: 'docs',
+			assets: 'docs',
+			fallback: null,
+			precompress: false
+		}),
+		paths: {
+			base: dev ? "" : "/starseek",
+		},
+		
+		prerender: {
+			default: true
+		}
 	}
 };
 
