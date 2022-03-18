@@ -31,18 +31,18 @@ var tooltipVisibility = "hidden";
 var simulation = d3.forceSimulation();
 
 
-$: setupSimulation({nodes, links});
+// $: setupSimulation();
 // $: simulation.alpha(0.3).alphaTarget(0).restart();
 
-$: editMode || updateSimulation();
-$: editMode && (renameMode = false);
+// $: editMode || updateSimulation();
+// $: editMode && (renameMode = false);
 
 var drag = d3.drag()
   .on('start', handleDragStarted)
   .on('drag', (e, d) => { handleDragged(e, d) })
   .on('end', handleDragEnd);
 
-$: nodes && d3.selectAll(`.node-group`).call(drag);
+// $: nodes && d3.selectAll(`.node-group`).call(drag);
 
 function handleDragStarted(e) {
   if (!editMode) return;

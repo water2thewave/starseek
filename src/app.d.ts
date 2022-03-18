@@ -5,6 +5,9 @@
 declare namespace App {
 	// interface Locals {}
 	// interface Platform {}
-	// interface Session {}
+	interface Session {
+		defaultRole: 'cosmos',
+		defaultDataFile: 'cosmos.json',	// loaded for every new role
+	}
 	// interface Stuff {}
 }
