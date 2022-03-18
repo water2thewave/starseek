@@ -9,9 +9,11 @@
 
 	import KnowledgeGraph from '../../brain/KnowledgeGraph.svelte';
 	import DebugPanel from '../../brain/DebugPanel.svelte';
+	import {createEventDispatcher} from 'svelte';
   import * as d3 from "d3";
 	import { onMount } from 'svelte';
 
+	const dispatch = createEventDispatcher();
 
 
 	console.log({roles});
@@ -81,9 +83,8 @@
 			</form>
   <button 
 		on:click={() => {
-			if (editMode) {
-				// saveRole(selectedRole, roleData);
-			}
+			if (editMode) { dispatch('editOff'); }
+			   else 			{ dispatch('editOn'); }
 			editMode = !editMode;
 		}}
 		class="btn btn-outline-warning" aria-pressed={editMode} data-toggle="button" type="button" 

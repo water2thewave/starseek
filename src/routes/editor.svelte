@@ -4,22 +4,39 @@
   import RoleSelector from "$lib/components/RoleSelector.svelte";
   import { writable } from '$lib/browserStore.js';
 
-  import {roles as defaultRoles} from '../../static/roles.json';
   import { session } from "$app/stores";
+  import { onMount } from "svelte";
 
   const defaultRole = 'cosmos';
 	const defaultRoleData = {nodes: [], links: []};
+  const roleStore = writable('roles', {});
 
-	let roleData = {};
-  let roles = []
+	let roleData = defaultRoleData;
+  let roles = [];
+  var defaultRoles = {roles: []};
 
-  roles = defaultRoles.map((d) => d.name );
-  roleData = defaultRoles.find((d) => d.name === defaultRole).data || {};
+  roleStore.subscribe((storedData) => {
+    console.log('storedData',storedData);
+    // roles = Object.keys(storedData);
+    console.log('roles changed:',roles);
+  });
+  console.log('roleStore:',$roleStore);
 
-  let roleDatas = defaultRoles.reduce((store, e) => {
-    store[e.name] = e.data;
-    return store;
-  }, {});
+  onMount( () => {
+    fetchDefaultRoles();
+  });
+
+  function fetchDefaultRoles() {
+    fetch('roles.json')
+      .then(response => response.json())
+      .then(roleMap => {
+        defaultRoles = roleMap.roles.reduce((map, {name, data}) => { 
+          map[name] = data; 
+          return map;
+        }, {});
+        roles = Object.keys(defaultRoles);
+      });
+  }
 
   // console.log({defaultRoles});
 
@@ -32,16 +49,6 @@
   let clientHeight = 700;
 
 
-  // const roles = writable('roles', [{defaultRole: defaultRoleData}]);
-  // const role = writable('role', defaultRole);
-
-  // const editMode = writable('editMode', false);
-  // const nodeNumEnabled = writable('nodeNumEnabled', false);
-
-
-  // console.log('Roles', roles);
-
-
 	function cleanLink(link) {
 		let {index, source, target} = link;
 		if (typeof source === 'object' && 'id' in source) {
@@ -51,51 +58,51 @@
 		return link;
 	}
 
-function saveRole(role, data) {
-	const {nodes, links} = data;
-	const saveLinks = links.map(cleanLink);
+  function saveRole(role, data) {
+    const {nodes, links} = data;
+    const saveLinks = links.map(cleanLink);
 
-	// const saveNodes = nodes.map(({id, word}) =>  {id, word});
-	// const saveData = {nodes: saveNodes, links: saveLinks};
-	const saveData = {nodes, links: saveLinks};
-	console.log('saved to localStorage', role, saveData);
-	let jsonStr = JSON.stringify(saveData);
+    // const saveNodes = nodes.map(({id, word}) =>  {id, word});
+    // const saveData = {nodes: saveNodes, links: saveLinks};
+    const saveData = {nodes, links: saveLinks};
+    // let jsonStr = JSON.stringify(saveData);
 
-  selectedRole = role;
-  // $roles[role] = jsonStr;
+    $roleStore[role] = saveData;
+    console.log('saved to localStorage', role, saveData);
+  }
 
-	// window.localStorage.setItem(role, jsonStr);
-	// window.sessionStorage.setItem('selectedRole', selectedRole);
+  function loadRole(roleName) {
+    return new Promise((resolve) => {
+      // try localstorage
+      let storedData = $roleStore[roleName];
+      console.log({storedData});
+      if (storedData != null) {
+        console.log(`Loading from localstorage role data for ${roleName}`, storedData);
+        resolve(storedData);
+      }
+      
+      // try getting default data
+      else if (roleName in defaultRoles) {
+        const data = defaultRoles[roleName]
+        console.log(`Loading default role data for ${roleName}`, data);
+        resolve(data);
+      }
 
-}
-
-function loadRole(roleName) {
-  return new Promise((resolve) => {
-    let storedData = window.localStorage.getItem(roleName);
-    console.log({storedData});
-    if (storedData != null) {
-      resolve(JSON.parse(storedData));
-    }
-    
-    // try getting default data
-    if (roleName in roleDatas) {
-      const data = roleDatas[roleName];
-      console.log(`Loading default role data for ${roleName}`, data);
-      resolve(roleDatas[roleName]);
-    }
-
-    // console.log(`Did not class to ${role}`, roleData);
-    throw Error('No data found');
-  });
-}
+      // console.log(`Did not class to ${role}`, roleData);
+      throw Error('No data found');
+    });
+  }
 
 function onRoleSelect(e) {
   const roleName = e.detail;
 
   console.log('Role selected', roleName);
   loadRole(roleName)
-    .then((roleData) => {
+    .then((loaded) => {
       selectedRole = roleName;
+      $roleStore[roleName] = loaded;
+      roleData = loaded;
+      console.log(`Loaded: ${roleName}: `, loaded)
     })
     .catch((e) => {
       console.error(`Could not load role from role selector: ${roleName}`)
@@ -111,6 +118,12 @@ function onRoleSelect(e) {
 
 
 <ContestellationHome 
+  on:editOff={(e) => {
+    // if (editMode) {
+      saveRole(selectedRole, roleData);
+      console.log('Edit off');
+    // }
+  }}
   bind:roles
   width={clientWidth} height={clientHeight}
   {defaultRole}

@@ -15,6 +15,7 @@ export function writable(key, initialValue) {
     set(value) {
     // check if in client
       if(browser){
+        console.debug(`Localstorage saved. ${key}: `, value)
         localStorage.setItem(key, JSON.stringify(value))
       }
       set(value)
