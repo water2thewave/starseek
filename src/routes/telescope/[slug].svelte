@@ -43,9 +43,9 @@
 </h2>
 <h2 class="display-6">
 </h2>
-  <p class="lead">
-    Display constellation data for stars.
-  </p>
+<p class="lead">
+  Display constellation data for stars.
+</p>
   
 <div class="alert alert-warning" role="alert">
   ⚠️ Under Construction 🚧 
