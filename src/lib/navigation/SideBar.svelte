@@ -1,9 +1,9 @@
-<script>
+<script lang="ts">
   // SideBar.svelte
-  // 
-</script>
+  // Start here to add a feature.
+  // Each feature of the app is available
 
-Library
+</script>
 
 <div class="container-fluid">
   <div class="row">
@@ -38,12 +38,12 @@ Library
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
-              🌃 Local Storage
+            <a class="nav-link" href="/storage">
+              🌃 Storage
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="/starmaps">
               🌠 Public Starmap
             </a>
           </li>
