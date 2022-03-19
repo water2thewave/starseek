@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "src"
+		},
+		{
+			"path": "static"
+		}
+	],
+	"settings": {
+		"editor.fontFamily": "mononoki Nerd Font, 'Courier New', monospace"
+	}
+}
