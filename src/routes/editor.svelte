@@ -18,16 +18,20 @@
 
   roleStore.subscribe((storedData) => {
     console.log('storedData',storedData);
-    // roles = Object.keys(storedData);
     console.log('roles changed:',roles);
+    roles = Object.keys(storedData);
+    roles.sort((a,b) => (a.localeCompare(b)));
   });
+
   console.log('roleStore:',$roleStore);
 
   defaultRoles = rolesJson.roles.reduce((map, {name, data}) => { 
     map[name] = data; 
+    $roleStore[name] = data;
     return map;
   }, {});
-  roles = Object.keys(defaultRoles);
+  roles = Object.keys($roleStore);
+  roles.sort((a,b) => (a.localeCompare(b)));
 
 
   var debugEnabled = false;;
@@ -108,6 +112,12 @@ function onRoleSelect(e) {
 
 
 <ContestellationHome 
+  on:submitRole={(e) => {
+    const roleName = e.detail;
+    console.log(`Submitted ${ roleName }`);
+    saveRole(roleName, roleData);
+  }}
+
   on:editOff={(e) => {
     // if (editMode) {
       saveRole(selectedRole, roleData);

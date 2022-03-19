@@ -43,11 +43,10 @@
 	</div>
 	
 	
-	<h1>Here be elements
+	<h1>Here be elements - no drag functionality
 			<form on:submit|preventDefault={(e) => {
-				console.log('SAved  role with enter',  );
-				// saveRole(selectedRole, roleData);
-				// getRoles();
+				// console.log('Saved role with enter',  );
+			  dispatch('submitRole', selectedRole); 
 			}}>
 			<div class="input-group mb-3">
 					<span class="input-group-text" id="basic-addon1">Class</span>
