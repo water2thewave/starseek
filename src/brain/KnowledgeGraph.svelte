@@ -12,9 +12,6 @@
   const defaultSize = 30;
 
 
-  // TODO bug: ids don't match index. this messes up links sometimes
-
-
 $: editModeClass = editMode ? 'edit-mode' : '';
 
 var selectedNode;

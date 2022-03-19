@@ -3,6 +3,7 @@
   import StarseekBar from "$lib/components/StarseekBar.svelte"
   import TokenStats from "$lib/components/TokenStats.svelte";
 
+  var qmHash = "Qmbp5ae9UdBjDPR1H66rA5q4Dj7n6rcwCdVFurTrWr8w1s";
 </script>
 
 
@@ -14,7 +15,13 @@
       <a class="navbar-brand">Starseek</a>
     </div>
 
-    <StarseekBar></StarseekBar>
+    <StarseekBar 
+      value={qmHash}
+      on:submit={(e) => {
+        let qmhash = e.detail;
+        console.log({qmhash});
+      }}
+    ></StarseekBar>
     
     <div class="navbar col col-1 justify-content-end ">
         <button class="navbar-toggler collapsed " type="button" 
