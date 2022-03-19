@@ -4,17 +4,17 @@
       <div class="position-sticky pt-3">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link" href="/">
+            <a class="nav-link" href="/library">
               ⭐ My Library
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="role">
+            <a class="nav-link" href="/role">
               🧙‍♂️ Role
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="editor">
+            <a class="nav-link" href="/editor">
               📜️ Editor ✒️ 
             </a>
           </li>
@@ -25,6 +25,11 @@
         </h6>
 
         <ul class="nav flex-column mb-2">
+          <li class="nav-item">
+            <a class="nav-link" href="/telescope">
+              🔭 Telescope
+            </a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="#">
               🌃 Local Storage

@@ -2,6 +2,7 @@
   import Profile from "$lib/components/Profile.svelte"
   import StarseekBar from "$lib/components/StarseekBar.svelte"
   import TokenStats from "$lib/components/TokenStats.svelte";
+  import { goto } from '$app/navigation';
 
   var qmHash = "Qmbp5ae9UdBjDPR1H66rA5q4Dj7n6rcwCdVFurTrWr8w1s";
 </script>
@@ -20,6 +21,7 @@
       on:submit={(e) => {
         let qmhash = e.detail;
         console.log({qmhash});
+        goto(`/telescope/${qmhash}`);
       }}
     ></StarseekBar>
     
