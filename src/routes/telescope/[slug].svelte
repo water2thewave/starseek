@@ -1,12 +1,14 @@
 <script context="module">
   // import KnowledgeGraph from "$lib/../brain/KnowledgeGraph.svelte";
 
+  import DebugPanel from "$lib/../brain/DebugPanel.svelte";
+
+  /** @type {import('./[slug]').Load} */
   export async function load({ url, params, fetch, session, stuff }) {
     const urlSearchParams = url.searchParams;
     
-    if (urlSearchParams.has('q')) {
-      console.log({q: urlSearchParams.get('q')});
-      const ipfsLink = `https://gateway.ipfs.io/ipfs/${urlSearchParams.get('q')}`;
+    if (params.slug) {
+      const ipfsLink = `https://gateway.ipfs.io/ipfs/${params.slug}`;
       const response = await fetch(ipfsLink);
       const json = await response.json();
       console.log({json});
@@ -17,7 +19,7 @@
     }
 
     return {
-      status: 200,
+      status: 404,
       props: {
         nodes: [],
         links: [],
@@ -36,7 +38,27 @@
 </script>
 
 
-telescope here {$page.params.cid}
+<h2 class="display-2">
+  Telescope 
+</h2>
+<h2 class="display-6">
+</h2>
+  <p class="lead">
+    Display constellation data for stars.
+  </p>
+  
+<div class="alert alert-warning" role="alert">
+  ⚠️ Under Construction 🚧 
+<br>
+  This is read-only until further notice!
+</div>
+
+<DebugPanel
+  roleData={{nodes, links}}
+  role="!!Role not stored in star!!"
+  nodeNumEnabled={false}
+></DebugPanel>
+
 <!-- 
 
 <KnowledgeGraph width=700 height=700

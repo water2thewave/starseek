@@ -47,7 +47,7 @@ var deleteConfirm = false;
 
 
 	<button class="btn btn-primary show-localstorage" type="button" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="lscontent" data-target="#lscontent">
-		Show localstorage
+		Show JSON
 	</button>
 
 
