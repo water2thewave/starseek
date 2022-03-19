@@ -1,4 +1,5 @@
 <script>
+  // import "carbon-components-svelte/css/g80.css";
   import Profile from "$lib/components/Profile.svelte"
   import StarseekBar from "$lib/components/StarseekBar.svelte"
   import TokenStats from "$lib/components/TokenStats.svelte";

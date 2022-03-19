@@ -1,5 +1,4 @@
 <script>
-  import "carbon-components-svelte/css/g80.css";
   import TopBar from '$lib/navigation/TopBar.svelte';
   import SideBar from '$lib/navigation/SideBar.svelte';
 
