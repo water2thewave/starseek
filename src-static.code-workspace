@@ -8,6 +8,9 @@
 		},
 		{
 			"path": "static"
+		},
+		{
+			"path": "blog"
 		}
 	],
 	"settings": {
