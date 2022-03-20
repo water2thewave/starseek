@@ -86,6 +86,11 @@
         </div>
       </div>
   
+        <p>
+          We should show like a skyrim spell tree and the number of points the class has in it.
+          When they click it, it can show the rituals used to practice that skillpoint, along with their
+          logs.
+        </p>
       <RadarChart {data} {options}></RadarChart>
 
 

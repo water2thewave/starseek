@@ -1,4 +1,3 @@
-
 <script>
 	export let width, height;
 	export let defaultRole;
@@ -14,6 +13,8 @@
 	import { onMount } from 'svelte';
 
 	const dispatch = createEventDispatcher();
+	// TODO when editing a clone of the graph, e.g. saving wizard to wizard2, wizard will still reflect some nodes of wizard2.
+	// This only lasts until reload. On reload, they'll be independent graphs.
 
 
 	console.log({roles});

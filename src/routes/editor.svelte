@@ -26,7 +26,9 @@
   console.log('roleStore:',$roleStore);
   console.log({rolesJson});
 
-  defaultRoles = rolesJson.roles.reduce((map, {name, data}) => { 
+  defaultRoles = rolesJson.roles.reduce((map, {name, nodes, links}) => { 
+    const data = {nodes, links};
+    console.log({data});
     map[name] = data; 
     $roleStore[name] = data;
     return map;

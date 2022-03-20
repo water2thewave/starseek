@@ -2,12 +2,16 @@
   
 	export let roles, selectedRole;
 
-	import { createEventDispatcher } from 'svelte';	
+	import { onMount, createEventDispatcher } from 'svelte';	
 
 	const dispatch = createEventDispatcher();
 	
   function onRoleSelect(roleName) {
   }
+
+	onMount(() => {
+		dispatch('roleSelect', selectedRole);
+	});
 
 </script>
 
