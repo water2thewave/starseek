@@ -35,16 +35,31 @@
   
   <div class="container">
     <h1>Stored constellations</h1>
-    <ul class="list-group list-group-flush">
+
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Pin Status</th>
+        <th scope="col">Size</th>
+      </tr>
+    </thead>
+    <tbody>
       {#each constellations as c}
-      <li class="list-group-item">
-        <div class="card-body">
-              <h5 class="card-title">{c.name}</h5>
-              <h5 class="card-subtitle mb-2 text-muted">Qmbp5ae9UdBjDPR1H66rA5q4Dj7n6rcwCdVFurTrWr8w1s</h5>
-        </div>
-      </li>
+      <tr>
+        <td >
+          <h5 class="card-title ">{c.name}</h5>
+          <h5 class="card-subtitle mb-2 text-muted">Qmbp5ae9UdBjDPR1H66rA5q4Dj7n6rcwCdVFurTrWr8w1s</h5>
+        </td>
+        <td >📌</td>
+        <td >7 kb</td>
+      </tr>
       {/each}
-    </ul>
+      <!-- <li class="list-group-item">
+        <div class="card-body">
+      <tr>
+        </div>
+      </li> -->
+    </tbody>
   </div>
 	<div data-v-eab7a922="" data-v-7ee652c5="" class="project-usage">
 		<div data-v-a8608554="" data-v-eab7a922="" class="usage-area project-usage__storage-used">

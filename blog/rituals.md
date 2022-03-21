@@ -16,6 +16,8 @@ Writing your own set of rituals allows the coder to experience
 how the workflow is designed to be used. It keeps them focused
 on the project. Necessary context is localized.
 
+The ego turns off and on in deep focus.
+
 
 > In code, start and stop in concentrated sessions
 > Begin and end with the same rituals
@@ -23,7 +25,7 @@ on the project. Necessary context is localized.
 > And too, the sun and moon to their family that light the sky
 >
 > Write two languages: two for machine, two for human.
-> One goes to machine to interact, the other for the being.
+> One speaks to the machine, the other speaks to the being.
 > 
 > As seeds of nature, we place firm roots
 > Look to the sky, to the very tree top
@@ -38,6 +40,7 @@ on the project. Necessary context is localized.
 > Create blog post for session
 > Create branch for session
 > 
+> setUp()
 > Create a new branch for the session
 > Write your commits as a story watching the app grow
 > Note observations of tendencies, habits, frustrations, nature 
@@ -46,6 +49,8 @@ on the project. Necessary context is localized.
 > Recommit at the final commit to sum everything up
 > Make merge commit to parent branch
 > 
+> tearDown()
+> free the locks, garbage collect.
 > Review diff demo
 > Review code changes
 > Observe 2d code structures
