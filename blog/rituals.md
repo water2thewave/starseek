@@ -47,7 +47,8 @@ The ego turns off and on in deep focus.
 > in blog
 >
 > Recommit at the final commit to sum everything up
-> Make merge commit to parent branch
+> Make merge commit to parent branch 
+> `git merge --no-ff`
 > 
 > tearDown()
 > free the locks, garbage collect.
