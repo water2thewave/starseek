@@ -23,11 +23,19 @@
 </script>
 
 <div>
-	<h1>Telescope</h1>
+	<h1>Telescope🔭 </h1>
 	<br />
 	<h2>Search</h2>
 	<p>To use the telescope, type the Constellation's Seed (CID) in the navbar above.</p>
 	<br />
+
+	<h2>Overview</h2>
+	<p>
+    This is where we can view a single constellation in display mode.
+    You can click the nodes and visit other stars, viewing their constellations.
+  </p>
+	<br />
+
 	<h2>Sample Constellations</h2>
 
 	<ul>
