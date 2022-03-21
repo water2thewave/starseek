@@ -14,7 +14,10 @@
       console.log({json});
       return {
         status: response.status,
-        props: json,
+        props: {
+          ...json,
+          slug: params.slug
+        },
       };
     }
 
@@ -29,7 +32,7 @@
 </script>
 
 <script>
-  export let nodes, links;
+  export let nodes, links, slug;
 
   import { page, session } from "$app/stores";
 
@@ -53,6 +56,7 @@
   This is read-only until further notice!
 </div>
 
+<h6>{slug}</h6>
 <DebugPanel
   roleData={{nodes, links}}
   role="!!Role not stored in star!!"

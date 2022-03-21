@@ -69,8 +69,8 @@ var deleteConfirm = false;
 		<div class="card cardbody">
 			<label for="edit-json"> {role} </label>
 			<textarea class="edit-json"> {JSON.stringify(roleData, null, 2)} </textarea>
-			<a on:click={copyClipboard(roleData)}
-				class="copy-json btn btn-primary"> Copy text </a> 
+			<button on:click={copyClipboard(roleData)}
+				class="copy-json btn btn-primary"> Copy text </button> 
 		</div>
 	</div>
 	<NodeTable bind:nodes={roleData.nodes}>
