@@ -14,7 +14,10 @@
       console.log({json});
       return {
         status: response.status,
-        props: json,
+        props: {
+          ...json,
+          slug: params.slug
+        },
       };
     }
 
@@ -29,7 +32,7 @@
 </script>
 
 <script>
-  export let nodes, links;
+  export let nodes, links, slug;
 
   import { page, session } from "$app/stores";
 
@@ -46,6 +49,7 @@
 <p class="lead">
   Display constellation data for stars.
 </p>
+<h6>{slug}</h6>
   
 <div class="alert alert-warning" role="alert">
   ⚠️ Under Construction 🚧 
