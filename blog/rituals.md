@@ -59,6 +59,7 @@ The ego turns off and on in deep focus.
 > Continue the story as a blog developer
 > who has observed the app grow 
 > and redesigns how the app can grow smoothly
+> Take this time to implement a workflow tip
 >
 > Read the rituals to guide the session close.
 > Recite the license to make clear your role and the code's role
