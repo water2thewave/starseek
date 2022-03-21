@@ -49,7 +49,6 @@
 <p class="lead">
   Display constellation data for stars.
 </p>
-<h6>{slug}</h6>
   
 <div class="alert alert-warning" role="alert">
   ⚠️ Under Construction 🚧 
@@ -57,6 +56,7 @@
   This is read-only until further notice!
 </div>
 
+<h6>{slug}</h6>
 <DebugPanel
   roleData={{nodes, links}}
   role="!!Role not stored in star!!"
