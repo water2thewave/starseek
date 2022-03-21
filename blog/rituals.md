@@ -47,7 +47,8 @@ The ego turns off and on in deep focus.
 > in blog
 >
 > Recommit at the final commit to sum everything up
-> Make merge commit to parent branch
+> Make merge commit to parent branch 
+> `git merge --no-ff`
 > 
 > tearDown()
 > free the locks, garbage collect.
@@ -58,6 +59,7 @@ The ego turns off and on in deep focus.
 > Continue the story as a blog developer
 > who has observed the app grow 
 > and redesigns how the app can grow smoothly
+> Take this time to implement a workflow tip
 >
 > Read the rituals to guide the session close.
 > Recite the license to make clear your role and the code's role
