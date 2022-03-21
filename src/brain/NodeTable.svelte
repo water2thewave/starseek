@@ -29,11 +29,11 @@
 
 <style>
   
-table {
+.table {
   display: block;
   height: 10em;
   resize:vertical;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 }
 
 .scroll-content {
