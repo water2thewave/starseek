@@ -1,0 +1,16 @@
+{
+  "nodes": [
+    { "id": "controller", "value": "controller" },
+    { "id": "omen", "value": "omen" },
+    { "id": "astra", "value": "astra" },
+    { "id": "viper", "value": "viper" },
+    { "id": "brimstone", "value": "brimstone" }
+  ],
+  
+  "links": [
+    { "source": "controller", "target": "omen" },
+    { "source": "controller", "target": "astra" },
+    { "source": "controller", "target": "viper" },
+    { "source": "controller", "target": "brimstone" }
+  ]
+}

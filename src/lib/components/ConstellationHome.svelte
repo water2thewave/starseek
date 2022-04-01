@@ -7,7 +7,7 @@
 	export let roleData;
 
 	import KnowledgeGraph from '../../brain/KnowledgeGraph.svelte';
-	import DebugPanel from '../../brain/DebugPanel.svelte';
+	import DebugPanel from './DebugPanel.svelte';
 	import {createEventDispatcher} from 'svelte';
   import * as d3 from "d3";
 	import { onMount } from 'svelte';

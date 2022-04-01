@@ -4,7 +4,7 @@
   export let nodes, links;
   export let showNodeNum;
 
-  import EditBox from './EditBox.svelte'
+  import EditBox from '../lib/components/EditBox.svelte'
 
   import * as d3 from "d3";
   import { prevent_default } from "svelte/internal";
